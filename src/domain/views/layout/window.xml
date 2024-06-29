@@ -8,9 +8,9 @@
                     <Text>@Title</Text>
                 </Row>
                 <Row alignment="END" expand="True">
-                    <IconButton icon="VIEW_SIDEBAR_ROUNDED" on_click="shift" />
-                    <IconButton icon="MINIMIZE" on_click="mini" />
-                    <IconButton icon="CLOSE" on_click="remove" />
+                    <IconButton icon="VIEW_SIDEBAR_ROUNDED" on_click="window::shift" />
+                    <IconButton icon="MINIMIZE" on_click="window::mini" />
+                    <IconButton icon="CLOSE" on_click="window::remove" />
                 </Row>
             </Row>
         </Container>

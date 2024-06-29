@@ -8,11 +8,11 @@
                     <Text>@SubTitle</Text>
                 </Row>
                 <Row alignment="END" expand="True">
-                    <IconButton icon="SAVE_SHARP" on_click="men_click" />
-                    <IconButton icon="DELETE" on_click="men_click" />
-                    <IconButton icon="ARROW_DOWNWARD" on_click="men_click" />
-                    <IconButton icon="ARROW_UPWARD" on_click="men_click" />
-                    <IconButton icon="PREVIEW" on_click="men_click" />
+                    <IconButton icon="SAVE_SHARP" on_click="setting::men_click" />
+                    <IconButton icon="DELETE" on_click="setting::men_click" />
+                    <IconButton icon="ARROW_DOWNWARD" on_click="setting::men_click" />
+                    <IconButton icon="ARROW_UPWARD" on_click="setting::men_click" />
+                    <IconButton icon="PREVIEW" on_click="setting::men_click" />
                 </Row>
             </Row>
         </Container>

@@ -2,8 +2,8 @@
 <Column expand="True">
     <Text>Stage Area</Text>
     <Row>
-        <IconButton id="button2" icon="REMOVE" on_click="men_click" />
-        <IconButton id="button2" icon="REMOVE" on_click="men_click" />
+        <IconButton id="button2" icon="REMOVE" on_click="setting::men_click" />
+        <IconButton id="button2" icon="REMOVE" on_click="setting::men_click" />
     </Row>
     <Text>Work Area</Text>
     <Container id="contesto" bgcolor="#dcdcdc" expand="True">

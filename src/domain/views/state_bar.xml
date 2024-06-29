@@ -6,15 +6,15 @@
                 <DropdownOption>Main</DropdownOption>
                 <DropdownOption>Dev</DropdownOption>
             </Dropdown>
-            <IconButton id="debug" tooltip="debug" icon="BUG_REPORT_OUTLINED" on_click="plus_click" />
-            <IconButton id="info" tooltip="info" icon="INFO_OUTLINED" on_click="plus_click" />
+            <IconButton id="debug" tooltip="debug" icon="BUG_REPORT_OUTLINED" on_click="setting::plus_click" />
+            <IconButton id="info" tooltip="info" icon="INFO_OUTLINED" on_click="setting::plus_click" />
             <IconButton id="warning" tooltip="warning" icon="REPORT_PROBLEM_OUTLINED"
-                on_click="plus_click" />
-            <IconButton id="error" tooltip="errors" icon="ERROR_OUTLINE" on_click="plus_click" />
+                on_click="setting::plus_click" />
+            <IconButton id="error" tooltip="errors" icon="ERROR_OUTLINE" on_click="setting::plus_click" />
             <IconButton id="critical" tooltip="critical" icon="REPORT_OUTLINED"
-                on_click="plus_click" />
+                on_click="setting::plus_click" />
             <IconButton id="port" tooltip="ports" icon="SETTINGS_INPUT_ANTENNA"
-                on_click="plus_click" />
+                on_click="setting::plus_click" />
         </Row>
         <Row alignment="END" expand="1">
             <Text id="selected">Blocco:10 Riga:1 Col:10</Text>

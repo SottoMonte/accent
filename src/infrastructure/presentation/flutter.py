@@ -18,8 +18,11 @@ def ATTR(root):
                 case 'on_click':
                     #print(globals())
                     #event = globals()[root.attrib[key]]
-                    module = importlib.import_module('application.plug.controller.setting', package=None)
-                    func = getattr(module,root.attrib[key])
+                    name_module,name_func = root.attrib[key].split('::',1)
+                    print('#',name_module,name_func)
+                    module = importlib.import_module('application.plug.controller.'+name_module, package=None)
+                    
+                    func = getattr(module,name_func)
                     setable[key] = func
                 case 'on_change':
                     module = importlib.import_module('application.plug.controller.setting', package=None)
@@ -141,7 +144,7 @@ class presentation(portPresentation.presentation):
                     return ft.ListView(controls=doubled)
                 case 'Import':
                     if '@' not in root.attrib['view']:
-                        with open(root.attrib['view'], mode="r") as file:
+                        with open('/home/asd/accent/src/domain/views/'+root.attrib['view'], mode="r") as file:
                             content = file.read()
                         tree1 = ET.ElementTree(ET.fromstring(content))
                         root1 = tree1.getroot()

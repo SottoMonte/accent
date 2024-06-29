@@ -3,7 +3,7 @@ import os
 import aiofiles
 
 
-class filesystem(port.port):
+class persistence(port.port):
 
     def __init__(self):
         pass

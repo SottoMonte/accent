@@ -2,11 +2,11 @@ import application.usecases.flow as flow
 import flet as ft
 import inspect
 
-@flow.async_function(wait='start',act=('echo',),ports=('presentation','filesystem'))
+@flow.async_function(wait='start',act=('echo',),ports=('presentation','persistence'))
 async def open_window(e,**constants):
-    testo = await constants['filesystem'].read(file=e.control.tooltip)
-    win = await constants['filesystem'].read(file='/home/asd/accent/src/infrastructure/view/layout/window.xml')
-    vista = await constants['filesystem'].read(file='/home/asd/accent/src/infrastructure/view/tab.xml')
+    testo = await constants['persistence'].read(file=e.control.tooltip)
+    win = await constants['persistence'].read(file='/home/asd/accent/src/domain/views/layout/window.xml')
+    vista = await constants['persistence'].read(file='/home/asd/accent/src/domain/views/tab.xml')
     vista = vista.replace("@file_name", e.control.text)
     win = win.replace("@Title", e.control.tooltip)
     #print(vista,testo)
@@ -37,7 +37,7 @@ async def close_window(e):
 async def minimize_window(e):
     e.page.window_maximized()
 
-@flow.async_function(wait='start',act=('echo',),ports=('presentation','filesystem'))
+@flow.async_function(wait='start',act=('echo',),ports=('presentation','persistence'))
 async def shift(e,**constants):
     #mast = constants['presentation'].tree_view['master'].controls[0]
     
@@ -49,7 +49,7 @@ async def shift(e,**constants):
             constants['presentation'].tree_view['master'].controls[0] = win
     await e.page.update_async()
 
-@flow.async_function(wait='start',act=('echo',),ports=('presentation','filesystem'))
+@flow.async_function(wait='start',act=('echo',),ports=('presentation','persistence'))
 async def remove(e,**constants):
     
     for idx,win in enumerate(constants['presentation'].tree_view['slave'].controls):
@@ -59,7 +59,7 @@ async def remove(e,**constants):
     
     await e.page.update_async()
 
-@flow.async_function(wait='start',act=('echo',),ports=('presentation','filesystem'))
+@flow.async_function(wait='start',act=('echo',),ports=('presentation','persistence'))
 async def mini(e,**constants):
     
     for idx,win in enumerate(constants['presentation'].tree_view['slave'].controls):

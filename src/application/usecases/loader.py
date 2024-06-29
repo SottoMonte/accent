@@ -1,31 +1,18 @@
 from kink import di
 import importlib
 
+# pass le configurazioni qui
+
+def loader(**constants):
+    driver = importlib.import_module(constants['path'], package=None)
+    provider = getattr(driver,constants['name'])
+    di[constants['name']] = lambda _di: provider()
+
 def bootstrap_adapter() -> None:
-    module_port = importlib.import_module('infrastructure.message.redis', package=None)
-    #print("--->",dir(module_port))
-
-    ihh = getattr(module_port,'messenger')
-
-    di['messenger'] = lambda _di: ihh()
-
-    module_port = importlib.import_module('infrastructure.message.logging', package=None)
-    #print("--->",dir(module_port))
-
-    ihh_log = getattr(module_port,'log')
-
-    di['log'] = lambda _di: ihh_log()
-
-    fs_module_port = importlib.import_module('infrastructure.persistence.ext4', package=None)
-    #print("--->",dir(module_port))
-
-    fs_ihh = getattr(fs_module_port,'filesystem')
-    di['filesystem'] = lambda _di: fs_ihh()
-
-    gui_module = importlib.import_module('infrastructure.presentation.flutter', package=None)
-    #print("--->",dir(module_port))
-
-    gui_port = getattr(gui_module,'presentation')
-    di['presentation'] = lambda _di: gui_port()
+    loader(name='messenger',path='infrastructure.message.redis')
+    loader(name='log',path='infrastructure.message.logging')
+    loader(name='persistence',path='infrastructure.persistence.ext4')
+    loader(name='presentation',path='infrastructure.presentation.flutter')
+    loader(name='console',path='infrastructure.console.unix')
 
     di['log'].speak(message="BOOTSTARP - LOADER")

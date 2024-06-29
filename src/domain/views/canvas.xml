@@ -3,7 +3,7 @@
     <Container expand="True" id="previw" height="300" bgcolor="#555555">
         <Row alignment="START" expand="True">
             <Row id="master" expand="1" spacing="10">
-                <Import view="/home/asd/accent/src/infrastructure/view/layout/window.xml" />
+                <Import view="layout/window.xml" />
             </Row>
             <Column id="slave" expand="1">
 
