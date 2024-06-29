@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Column expand="True" spacing="0">
+    <WindowDragArea>
+        <Import view="/home/asd/accent/src/infrastructure/view/tool_bar.xml"/>
+    </WindowDragArea>
+    <Container expand="True" bgcolor="#888888">
+        <Row expand="True">
+            <Import view="/home/asd/accent/src/infrastructure/view/navigation.xml"/>
+            <Import view="/home/asd/accent/src/infrastructure/view/canvas.xml"/>
+            <Import view="/home/asd/accent/src/infrastructure/view/panel.xml"/>
+        </Row>
+    </Container>
+    <Import view="/home/asd/accent/src/infrastructure/view/state_bar.xml"/>
+</Column>

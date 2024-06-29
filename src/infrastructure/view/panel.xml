@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Box -->
+<Container width="350" bgcolor="#999999">
+    <Column>
+        <!-- List of Contents -->
+        <IconButton icon="LIST_SHARP" icon_size="48" tooltip="List of Contents"/>
+        <Divider/>
+        <!-- Data Table -->
+        <DataTable>
+            <DataColumn>
+                <Text>Name</Text>
+            </DataColumn>
+            <DataColumn>
+                <Text>Type</Text>
+            </DataColumn>
+            <DataColumn>
+                <Text>Value</Text>
+            </DataColumn>
+            <DataRow>
+                <DataCell>
+                    <Text>Body</Text>
+                </DataCell>
+                <DataCell>
+                    <Text>string</Text>
+                </DataCell>
+                <DataCell>
+                    <Text>sdsdsd</Text>
+                </DataCell>
+            </DataRow>
+        </DataTable>
+        <Divider/>
+        <!-- Object Properties -->
+        <Container id="property" bgcolor="#d76a51">
+
+        </Container>
+    </Column>
+</Container>

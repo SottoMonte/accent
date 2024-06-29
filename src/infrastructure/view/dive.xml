@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Container expand="True">
+    <Row expand="True">
+        <Container expand="True" bgcolor="#cccccc"></Container>
+        <VerticalDivider thickness="5" />
+        <Container expand="True" bgcolor="#999999"></Container>
+    </Row>
+</Container>

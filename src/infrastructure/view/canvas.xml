@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Column expand="True" spacing="1">
+    <Container expand="True" id="previw" height="300" bgcolor="#555555">
+        <Row alignment="START" expand="True">
+            <Row id="master" expand="1" spacing="10">
+                <Import view="/home/asd/accent/src/infrastructure/view/layout/window.xml" />
+            </Row>
+            <Column id="slave" expand="1">
+
+            </Column>
+        </Row>
+    </Container>
+    <Divider />
+    <Container id="previw" height="300" bgcolor="#cccccc">
+        <Tabs scrollable="True">
+            <Tab text="GIT" icon="ACCOUNT_TREE">
+
+            </Tab>
+            <Tab text="TEST" icon="SCIENCE_SHARP">
+
+            </Tab>
+            <Tab text="MAN" icon="PRECISION_MANUFACTURING">
+
+            </Tab>
+        </Tabs>
+    </Container>
+</Column>

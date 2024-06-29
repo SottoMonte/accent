@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Container bgcolor="#444444" expand="1" margin="0" padding="0">
+    <Column spacing="0">
+        <!-- Barra -->
+        <Container bgcolor="#222222" margin="0" padding="5">
+            <Row>
+                <Row alignment="START">
+                    <Text>@Title</Text>
+                </Row>
+                <Row alignment="END" expand="True">
+                    <IconButton icon="VIEW_SIDEBAR_ROUNDED" on_click="shift" />
+                    <IconButton icon="MINIMIZE" on_click="mini" />
+                    <IconButton icon="CLOSE" on_click="remove" />
+                </Row>
+            </Row>
+        </Container>
+        <!-- Contenuto -->
+        <ListView spacing="10" padding="0">
+            <Stack>
+                <ListView spacing="10" padding="0">
+                    <TextField multiline="True" on_focus="bar_state_update">@file</TextField>
+                </ListView>
+                
+                <Import view="@extede" />
+            </Stack>
+        </ListView>
+        
+        
+    </Column>
+</Container>

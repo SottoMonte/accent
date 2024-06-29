@@ -1,0 +1,9 @@
+Domain-Driven Design
+https://dev.to/barryosull/folder-structure-and-frameworks-what-is-exerting-control-4kpi
+https://www.codeguru.com/csharp/understanding-onion-architecture/
+https://barryosull.com/blog/cleaning-up-your-codebase-with-a-clean-architecture/
+https://laravel.com/docs/11.x/authorization
+https://medium.com/@alessandro.traversi/understanding-onion-architecture-an-example-folder-structure-9c62208cc97d
+https://it.wikipedia.org/wiki/Domain-driven_design
+https://medium.com/codenx/code-in-clean-vs-traditional-layered-architecture-net-31c4cad8f815
+https://medium.com/@deivisonisidoro_94304/revolutionizing-software-development-unveiling-the-power-of-clean-architecture-with-typescript-5ee968357d35

@@ -1,0 +1,118 @@
+https://www.youtube.com/watch?v=yfLu5UiYABo&list=PLdYHjrPuGeKFskU1KQBf3WETngxU3smjK&index=6&ab_channel=ManuelZavatta
+
+àccëntî äccéntî
+
+Àccëntî àccëntî
+
+
+________________________
+# Titolo della Pull Request
+
+## Descrizione
+Breve descrizione del problema o della funzionalità che questa PR risolve o introduce.
+
+## Motivazione
+Spiega perché questa PR è necessaria. Qual è il contesto o la ragione dietro questa modifica?
+
+## Cosa è stato fatto
+Descrivi le modifiche apportate nel dettaglio. Puoi includere snippet di codice, immagini o diagrammi se necessario.
+
+## Come testare
+Fornisci istruzioni su come testare le modifiche apportate da questa PR. Ad esempio, quali comandi eseguire o quali scenari verificare.
+
+## Verifica
+- [ ] Ho testato le modifiche localmente.
+- [ ] Ho verificato che i test passino.
+- [ ] Ho aggiornato la documentazione se necessario.
+
+## Note aggiuntive
+Eventuali note o considerazioni extra.
+---------------------------------------------------------------------- PR
+GIT
+
+git remote
+
+git remote add @allias @linkrepository
+
+## creare una nuova repository locale
+git init
+## creare una nuova repository locale da una remota
+git clone @remota
+
+## mostra tutti i file area di lavoro
+git status
+## aggiunge un file nella stage area
+git add 
+## registra una instantania
+git commit 
+## sostituisce un commit esistente con un nuovo
+git commit --amend
+## rimuove un file dallo stage area
+git restore --staged
+## mostro log repository
+git log
+## mostra in dettaglio i commit
+git log --stat
+# mostra i commit su una sola riga
+git log --oneline
+# mostra tutti i repository locali  e remoti
+git log --all
+# stampa i commit a grafo
+git log --graph
+
+
+
+git remote
+## aggiungere da locale -> remoto un ramo
+git push @remoto @renotoBranch
+## add tag locale -> remoto
+git push @remoto @tag
+## rimuove un ramo da un repository remoto
+git push origin --delete @nomeramo
+
+## sicronizza con remoto -> locale
+git fetch
+git fetch --all
+## aggiunge file da remoto -> locale a una branch
+git pull @remoto @nomeRamoRemoto
+
+# ramificazioni e sviluppo parallelo
+## crea un nuovo ramo
+git branch 
+## rimuove ramo 
+git branch -d
+git branch -delete @nomeramo
+## cambia il ramo
+git checkout
+## per copiare un ramo remoto -> locale
+git checkout -b @ramoNome @Aliass+Branch
+
+# riunire i rami e risolvere i conflitti
+## unire i rami da quello in cui sei con un altro
+git merge @ramo
+## vedere le differenze tra rami
+git diff
+## unire 2 rami divergenti mantenendo la liniarita della storia repository
+git rebase @ramo
+## per mettere di salvare lo stato di working area
+git stash push
+
+git stash list
+
+git stash apply
+
+git stash drop
+
+git stash clear
+
+## viene usato per le versioni v 1.0
+git tag -a v1.0 @hashCommit -m "Release 1.0"
+## tag leggeri
+git tag v1.1
+## rimuove tag 
+git tag -d @tag
+
+.gitignore
+idee/*
+!idee/istruzioni.md
+*.cpy

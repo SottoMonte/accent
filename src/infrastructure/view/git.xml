@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Column expand="True">
+    <Text>Stage Area</Text>
+    <Row>
+        <IconButton id="button2" icon="REMOVE" on_click="men_click" />
+        <IconButton id="button2" icon="REMOVE" on_click="men_click" />
+    </Row>
+    <Text>Work Area</Text>
+    <Container id="contesto" bgcolor="#dcdcdc" expand="True">
+
+    </Container>
+</Column>

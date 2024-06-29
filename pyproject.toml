@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[metadata]
+name = "sloth"
+version = "0.0.1"
+
+[tool.setuptools.packages]
+find = {}  # Scan the project directory with the default parameters
+
+[project]
+name = "magic"
+version = "0.0.1"
+readme = "README.md"
+requires-python = ">=3.8"
+
+[database]
+url = "mongodb://localhost:27017"
+name = "mydb"
+username = "myuser"
+password = "mypassword"
+level = "info"
+
+[gui]
+title = "Welcome"
+dir = "src/infrastructure/view/layout/page.xml"
+level = "info"
