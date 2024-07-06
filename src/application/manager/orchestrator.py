@@ -3,16 +3,20 @@ class orchestrator():
     policies = [] # config
 
     def __init__(self,**constants):
-        if 'module' in constants:
-            return await di['persistence'].read(file=constants['module'])
-        pass
+        if 'services' in constants:
+            self.services = constants['services']
+        if 'service' in constants:
+            self.services.append(constants['service'])
+        if 'policies' in constants:
+            self.policies = constants['policies']
 
     async def __call__(self,**constants):
         if 'module' in constants:
-            return await di['persistence'].read(file=constants['module'])
+            return await services[0].read(file=constants['module'])
         pass
 
     async def register(self,**constants):
+        self.services.append(constants['driver'])
         return self
 
 
