@@ -1,0 +1,11 @@
+''' 
+(code:natural<key>)
+(customer:)
+(taxable)
+(tax)
+(issued)
+(cashed)
+(expired)
+(state)
+(year)
+'''

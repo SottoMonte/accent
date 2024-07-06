@@ -15,4 +15,6 @@ def bootstrap_adapter() -> None:
     loader(name='presentation',path='infrastructure.presentation.flutter')
     loader(name='console',path='infrastructure.console.unix')
 
+    loader(name='locator',path='application.orchestrator.locator')
+
     di['log'].speak(message="BOOTSTARP - LOADER")
