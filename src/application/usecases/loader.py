@@ -6,7 +6,7 @@ import importlib
 def loader_manager(**constants):
     driver = importlib.import_module(constants['path'], package=None)
     provider = getattr(driver,constants['name'])
-    di[constants['name']] = lambda _di: provider()
+    di[constants['name']] = lambda _di: provider(services=[di['persistence'],])
 
 def loader_driver(**constants):
     driver = importlib.import_module(constants['path'], package=None)
