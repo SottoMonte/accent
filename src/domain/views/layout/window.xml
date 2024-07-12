@@ -21,7 +21,7 @@
                     <TextField multiline="True" on_focus="bar_state_update">@file</TextField>
                 </ListView>
                 
-                <Import view="@extede" />
+                <Locator view="@extede" />
             </Stack>
         </ListView>
         

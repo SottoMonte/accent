@@ -14,12 +14,12 @@ def loader_driver(**constants):
     di[constants['name']] = lambda _di: provider()
 
 def bootstrap_adapter() -> None:
+    loader_manager(name='locator',path='application.manager.locator')
+
     loader_driver(name='messenger',path='infrastructure.message.redis')
     loader_driver(name='log',path='infrastructure.message.logging')
     loader_driver(name='persistence',path='infrastructure.persistence.ext4')
     loader_driver(name='presentation',path='infrastructure.presentation.flutter')
     loader_driver(name='console',path='infrastructure.console.unix')
-
-    loader_manager(name='locator',path='application.manager.locator')
 
     di['log'].speak(message="BOOTSTARP - LOADER")

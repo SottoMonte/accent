@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Column expand="True" spacing="0">
     <WindowDragArea>
-        <Import view="tool_bar.xml"/>
+        <Locator view="tool_bar.xml"/>
     </WindowDragArea>
     <Container expand="True" bgcolor="#888888">
         <Row expand="True">
-            <Import view="navigation.xml"/>
-            <Import view="canvas.xml"/>
-            <Import view="panel.xml"/>
+            <Locator view="navigation.xml"/>
+            <Locator view="canvas.xml"/>
+            <Locator view="panel.xml"/>
         </Row>
     </Container>
-    <Import view="state_bar.xml"/>
+    <Locator view="state_bar.xml"/>
 </Column>

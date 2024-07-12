@@ -18,8 +18,8 @@ class locator(manager.port):
     ports = ['persistence']
 
     async def __call__(self,**constants):
-        if 'module' in constants:
-            return await self.services[0].read(file=constants['module'])
+        if 'url' in constants:
+            return await self.services[0].read(file=constants['url'])
         pass
 
     async def service(self,**constants):

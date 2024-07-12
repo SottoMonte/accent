@@ -8,7 +8,7 @@
             <IconButton icon="AUTO_AWESOME" icon_size="48" tooltip="Assistant AI Copilot" />
             <IconButton icon="HELP_SHARP" icon_size="48" tooltip="Documentation" />
         </Container>
-        <Import view="git.xml"/>
+        <Locator view="git.xml"/>
         
     </Row>
 </Container>

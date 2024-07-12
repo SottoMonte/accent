@@ -7,7 +7,7 @@ async def plus_click(e,**constants):
     box = constants['presentation'].tree_view['box']
     box.value = str(int(box.value) + 1)
     #print(await constants['locator'].service(module='/home/asd/accent/src/domain/views/property/container.xml'))
-    print(await constants['locator'](module='/home/asd/accent/src/domain/views/property/container.xml'))
+    print(await constants['locator'](url='/home/asd/accent/src/domain/views/property/container.xml'))
     await e.page.update_async()
 
 @flow.async_function(ports=('presentation',))

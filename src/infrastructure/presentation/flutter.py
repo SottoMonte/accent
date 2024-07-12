@@ -3,6 +3,7 @@ import flet as ft
 import toml
 import xml.etree.ElementTree as ET
 import application.ports.presentation as portPresentation
+import application.usecases.flow as flow
 import importlib
 
 def ATTR(root):
@@ -72,11 +73,9 @@ class presentation(portPresentation.presentation):
     def __init__(self):
         self.tree_view = dict()
 
-    async def builder(self,worker,file,data=None):
-        '''print(os.getcwd()+file)
-        with open(file, 'r') as f:
-            view = f.read()'''
-
+    @flow.async_function(ports=('locator',))
+    async def builder(self,worker,file,data=None,**constants):
+        file = await constants['locator'](url=file)
         #tree = ET.parse(file)
         tree = ET.ElementTree(ET.fromstring(file))
 
@@ -142,12 +141,13 @@ class presentation(portPresentation.presentation):
                                 doubled.append(itt)
                     
                     return ft.ListView(controls=doubled)
-                case 'Import':
+                case 'Locator':
                     if '@' not in root.attrib['view']:
                         with open('/home/asd/accent/src/domain/views/'+root.attrib['view'], mode="r") as file:
                             content = file.read()
                         tree1 = ET.ElementTree(ET.fromstring(content))
                         root1 = tree1.getroot()
+                        #print(await constants['locator'](module='/home/asd/accent/src/domain/views/'+root.attrib['view']))
                         return mount_view(root1)
                     else:
                         return ft.Text(root.attrib['view'])
@@ -344,10 +344,7 @@ class presentation(portPresentation.presentation):
             page.spacing = 0
             page.margin=0
             page.padding=0
-            print(config['gui']['dir'])
-            with open(config['gui']['dir'], mode="r") as file:
-                content = file.read()
             
-            view = await self.builder("null",content)
+            view = await self.builder("null",config['gui']['dir'])
             await page.add_async(view,)
         ft.app(main)
