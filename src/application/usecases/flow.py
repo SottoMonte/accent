@@ -47,13 +47,13 @@ def async_function(**constants):
             #print(port,constants)
             #path = {'persistence':'infrastructure.persistence.redis','presentation':'presentation.gui.flutter','messenger':'infrastructure.persistence.redis'}
             #module_port = importlib.import_module(path[port], package=None)
-            print(port)
+            #print(port)
             inject[port] = di[port]
     
     def decorator(function):
         async def wrapper(*arg, **kwargs):
             output = None
-            print("[FLOW(START):]",inject,arg,kwargs)
+            print(f"[FLOW(START::{function.__name__}):]",inject,arg,kwargs)
             #await asyncio.sleep(2)
             try:
                 #output = await function(*arg, **kwargs)
@@ -78,7 +78,7 @@ def async_function(**constants):
 
                 print(f'exception message: {e_message}')
             #fs = await filesystem.tree(path='/home/asd/accent')
-            print("[FLOW(END):]",output)
+            print(f"[FLOW(END::{function.__name__}):] return ->",output)
             #await messenger.signal(keys='c',app={'broker':None},value="ciao")
             return output
         return wrapper
@@ -99,12 +99,12 @@ def function(**constants):
             #print(port,constants)
             #path = {'persistence':'infrastructure.persistence.redis','presentation':'presentation.gui.flutter','messenger':'infrastructure.persistence.redis'}
             #module_port = importlib.import_module(path[port], package=None)
-            print(port)
+            #print(port)
             inject[port] = di[port]
     def decorator(function):
         def wrapper(*arg, **kwargs):
             output = None
-            print("[FLOW(START):]",arg,kwargs)
+            print(f"[FLOW(START::{function.__name__}):]",arg,kwargs)
             #await asyncio.sleep(2)
             try:
                 output = function(**inject,**kwargs)
@@ -122,7 +122,7 @@ def function(**constants):
                 print(f'exception line number: {e_line}')
 
                 print(f'exception message: {e_message}')
-            print("[FLOW(END):]",output)
+            print(f"[FLOW(END::{function.__name__}):] return ->",output)
             return output
         return wrapper
     return decorator

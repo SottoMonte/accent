@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ListView>
-    <ForEach data="@data" var="@item" recursive="True">
-        <TextButton text="@item[1]" tooltip="@item[2]" on_long_press="open_file" />
-    </ForEach>
+    {% for user in users %}
+    <TextButton text="{{ user.0 }}" tooltip="{{ user.1 }}" on_long_press="git::open_file" />
+    {% endfor %}
 </ListView>

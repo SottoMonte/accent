@@ -2,13 +2,14 @@
 <Container bgcolor="#b5b5b5" width="380">
     <Row expand="True">
         <Container bgcolor="#b5b5b5" width="60">
-            <IconButton icon="ACCOUNT_TREE" icon_size="48" tooltip="Explorer and Source Control" on_click="git::work_path" />
-            <IconButton icon="SCIENCE_SHARP" icon_size="48" tooltip="Testing" on_click="git::work_area" />
-            <IconButton icon="PRECISION_MANUFACTURING" icon_size="48" tooltip="Producing" />
-            <IconButton icon="AUTO_AWESOME" icon_size="48" tooltip="Assistant AI Copilot" />
-            <IconButton icon="HELP_SHARP" icon_size="48" tooltip="Documentation" />
+            <Column>
+                <IconButton icon="ACCOUNT_TREE" icon_size="48" tooltip="Explorer and Source Control" on_click="git::work_area" />
+                <IconButton icon="SCIENCE_SHARP" icon_size="48" tooltip="Testing" on_click="git::work_area" />
+                <IconButton icon="PRECISION_MANUFACTURING" icon_size="48" tooltip="Producing" />
+                <IconButton icon="AUTO_AWESOME" icon_size="48" tooltip="Assistant AI Copilot" />
+                <IconButton icon="HELP_SHARP" icon_size="48" tooltip="Documentation" />
+            </Column>
         </Container>
         <Locator view="git.xml"/>
-        
     </Row>
 </Container>

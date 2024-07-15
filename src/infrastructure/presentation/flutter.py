@@ -5,6 +5,7 @@ import xml.etree.ElementTree as ET
 import application.ports.presentation as portPresentation
 import application.usecases.flow as flow
 import importlib
+from jinja2 import Environment, PackageLoader, select_autoescape
 
 def ATTR(root):
     setable = dict({})
@@ -20,30 +21,35 @@ def ATTR(root):
                     #print(globals())
                     #event = globals()[root.attrib[key]]
                     name_module,name_func = root.attrib[key].split('::',1)
-                    print('#',name_module,name_func)
+                    #print('#',name_module,name_func)
                     module = importlib.import_module('application.plug.controller.'+name_module, package=None)
                     
                     func = getattr(module,name_func)
                     setable[key] = func
                 case 'on_change':
-                    module = importlib.import_module('application.plug.controller.setting', package=None)
-                    func = getattr(module,root.attrib[key])
+                    name_module,name_func = root.attrib[key].split('::',1)
+                    module = importlib.import_module('application.plug.controller.'+name_module, package=None)
+                    func = getattr(module,name_func)
                     setable[key] = func
                 case 'on_long_press':
-                    module = importlib.import_module('application.plug.controller.setting', package=None)
-                    func = getattr(module,root.attrib[key])
+                    name_module,name_func = root.attrib[key].split('::',1)
+                    module = importlib.import_module('application.plug.controller.'+name_module, package=None)
+                    func = getattr(module,name_func)
                     setable[key] = func
                 case 'on_blur':
-                    module = importlib.import_module('application.plug.controller.setting', package=None)
-                    func = getattr(module,root.attrib[key])
+                    name_module,name_func = root.attrib[key].split('::',1)
+                    module = importlib.import_module('application.plug.controller.'+name_module, package=None)
+                    func = getattr(module,name_func)
                     setable[key] = func
                 case 'on_submit':
-                    module = importlib.import_module('application.plug.controller.setting', package=None)
-                    func = getattr(module,root.attrib[key])
+                    name_module,name_func = root.attrib[key].split('::',1)
+                    module = importlib.import_module('application.plug.controller.'+name_module, package=None)
+                    func = getattr(module,name_func)
                     setable[key] = func
                 case 'on_focus':
-                    module = importlib.import_module('application.plug.controller.setting', package=None)
-                    func = getattr(module,root.attrib[key])
+                    name_module,name_func = root.attrib[key].split('::',1)
+                    module = importlib.import_module('application.plug.controller.'+name_module, package=None)
+                    func = getattr(module,name_func)
                     setable[key] = func
                 case 'icon':
                     somemodule = ft.icons
@@ -62,6 +68,10 @@ def ATTR(root):
                 case 'spacing':setable[key] = int(root.attrib[key])
                 case 'text_size':setable[key] = int(root.attrib[key])
                 case 'label':setable[key] = root.attrib[key]
+                case 'locator':
+                    with open(root.attrib[key], mode="r") as file:
+                            content = file.read()
+                    setable['value'] = content
                 case 'expand':
                     if root.attrib[key] == 'True': setable[key] = True
                     else: setable[key] = int(root.attrib[key])
@@ -72,12 +82,18 @@ class presentation(portPresentation.presentation):
 
     def __init__(self):
         self.tree_view = dict()
+        self.env = Environment()
 
-    @flow.async_function(ports=('locator',))
-    async def builder(self,worker,file,data=None,**constants):
-        file = await constants['locator'](url=file)
+    @flow.async_function(ports=('locator','log'))
+    async def builder(self,worker,file,data=dict({}),**constants):
+        stri = await constants['locator'](url=file)
         #tree = ET.parse(file)
-        tree = ET.ElementTree(ET.fromstring(file))
+        
+        template = self.env.from_string(stri)
+        rresult = template.render(**data)
+
+        print(rresult)
+        tree = ET.ElementTree(ET.fromstring(rresult))
 
         root = tree.getroot()
 
@@ -87,7 +103,7 @@ class presentation(portPresentation.presentation):
             inn = []
             if len(root) > 0:
                 for x in root:
-                    print(x.tag,x.attrib,len(x))
+                    constants['log'].speak(message=f"Tag:{x.tag}, Attribute:{x.attrib}, Length:{len(x)}")
                     ffff = mount_view(x)
                     inn.append(ffff)
 
@@ -145,7 +161,10 @@ class presentation(portPresentation.presentation):
                     if '@' not in root.attrib['view']:
                         with open('/home/asd/accent/src/domain/views/'+root.attrib['view'], mode="r") as file:
                             content = file.read()
-                        tree1 = ET.ElementTree(ET.fromstring(content))
+
+                        t = self.env.from_string(content)
+                        result = t.render(**data)
+                        tree1 = ET.ElementTree(ET.fromstring(result))
                         root1 = tree1.getroot()
                         #print(await constants['locator'](module='/home/asd/accent/src/domain/views/'+root.attrib['view']))
                         return mount_view(root1)
@@ -153,7 +172,13 @@ class presentation(portPresentation.presentation):
                         return ft.Text(root.attrib['view'])
                 case 'Container':
                     setable = ATTR(root)
-                    item = ft.Container(content=ft.Column(inn,expand=True),**setable)
+                    #ft.Column(inn,expand=True)
+                    
+                    print("-->",inn)
+                    if len(inn) == 1:
+                        item = ft.Container(content=inn[0],**setable)
+                    else:
+                        item = ft.Container(**setable)
                     if 'id' in root.attrib and (not root.attrib['id'] in self.tree_view):
                         self.tree_view[root.attrib['id']] = item
                         return self.tree_view[root.attrib['id']]
@@ -198,7 +223,7 @@ class presentation(portPresentation.presentation):
                     else:return item
                 case 'TextField': 
                     setable = ATTR(root)
-                    item = ft.TextField(value=root.text,**setable)
+                    item = ft.TextField(**setable)
                     if 'id' in root.attrib and (not root.attrib['id'] in self.tree_view):
                         self.tree_view[root.attrib['id']] = item
                         return self.tree_view[root.attrib['id']]
@@ -265,7 +290,7 @@ class presentation(portPresentation.presentation):
                     setable = ATTR(root)
                     c = [element for element in inn if isinstance(element,ft.DataColumn)]
                     r = [element for element in inn if isinstance(element,ft.DataRow)]
-                    print(c,r)
+                    #print(c,r)
                     item = ft.DataTable(columns=c,rows=r,**setable)
                     if 'id' in root.attrib and (not root.attrib['id'] in self.tree_view):
                         self.tree_view[root.attrib['id']] = item

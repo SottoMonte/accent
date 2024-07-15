@@ -2,9 +2,9 @@
 <Column expand="True" spacing="1">
     <Container expand="True" id="previw" height="300" bgcolor="#555555">
         <Row alignment="START" expand="True">
-            <Row id="master" expand="1" spacing="10">
-                <Locator view="layout/window.xml" />
-            </Row>
+            <Container id="master" expand="1">
+                
+            </Container>
             <Column id="slave" expand="1">
 
             </Column>

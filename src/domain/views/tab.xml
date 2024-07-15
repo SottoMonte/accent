@@ -5,7 +5,7 @@
         <Container bgcolor="#666666" margin="0" padding="5">
             <Row>
                 <Row alignment="START">
-                    <Text>@SubTitle</Text>
+                    <Text>{{ window or 'SubTitle' }}</Text>
                 </Row>
                 <Row alignment="END" expand="True">
                     <IconButton icon="SAVE_SHARP" on_click="setting::men_click" />
@@ -17,7 +17,7 @@
             </Row>
         </Container>
         <Stack>
-            <TextField multiline="True" on_focus="bar_state_update">@file</TextField>
+            <TextField multiline="True" on_focus="bar_state_update">{{ file or '' }}</TextField>
             <ListView expand="True" spacing="0" padding="0">
                 <Import view="@extede"/>
             </ListView>

@@ -43,17 +43,28 @@ async def shift(e,**constants):
     
     for idx,win in enumerate(constants['presentation'].tree_view['slave'].controls):
         
-        if win.content.controls[0].controls[1].controls[0].uid == e.control.uid:
-            swap = constants['presentation'].tree_view['master'].controls[0]
-            constants['presentation'].tree_view['slave'].controls[idx] = swap
-            constants['presentation'].tree_view['master'].controls[0] = win
+        if win.content.controls[0].content.controls[1].controls[0].uid == e.control.uid:
+            
+            if constants['presentation'].tree_view['master'].content != None:
+                swap = constants['presentation'].tree_view['slave'].controls[idx]
+                constants['presentation'].tree_view['slave'].controls[idx] = constants['presentation'].tree_view['master'].content
+                constants['presentation'].tree_view['master'].content = swap
+                #constants['presentation'].tree_view['slave'].controls.remove(swap)
+            else:
+                #constants['presentation'].tree_view['master'].content = win
+                print(constants['presentation'].tree_view['slave'].controls[idx],idx)
+                swap = constants['presentation'].tree_view['slave'].controls[idx]
+                constants['presentation'].tree_view['master'].content = swap
+                constants['presentation'].tree_view['slave'].controls.remove(swap)
+
     await e.page.update_async()
 
 @flow.async_function(wait='start',act=('echo',),ports=('presentation','persistence'))
 async def remove(e,**constants):
     
     for idx,win in enumerate(constants['presentation'].tree_view['slave'].controls):
-        if win.controls[0].content.controls[0].controls[1].controls[2].uid == e.control.uid:
+        #print(win.content.controls[0].controls[0].content.controls[0].controls[1].controls[2].uid)
+        if win.content.controls[0].content.controls[1].controls[2].uid == e.control.uid:
             constants['presentation'].tree_view['slave'].controls.remove(win)
             
     
@@ -63,8 +74,13 @@ async def remove(e,**constants):
 async def mini(e,**constants):
     
     for idx,win in enumerate(constants['presentation'].tree_view['slave'].controls):
-        if win.controls[0].content.controls[0].controls[1].controls[1].uid == e.control.uid:
-            if win.controls[1].visible:win.controls[1].visible = False
-            else: win.controls[1].visible = True
+        if win.content.controls[0].content.controls[1].controls[1].uid == e.control.uid:
+            print(win)
+            if win.content.controls[0].controls[1].visible:
+                win.content.controls[0].controls[1].visible = False
+                #win.expand = 0
+            else: 
+                win.content.controls[0].controls[1].visible = True
+                #win.expand = 1
             
     await e.page.update_async()
